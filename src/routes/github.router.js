@@ -52,17 +52,17 @@ router.get('/search/repos/:user', async (req, res) => {
   }
 })
 
-// @route GET api/github/search/init/
+// @route GET api/github/users/init
 // @desc GET Initial users to fill out home page
 // @access public
 
-router.get('/search/init', async (req, res) => {
+router.get('/users/init', async (req, res) => {
   try {
     const API_URL = await encodeURI(
-      `https://api.github.com/search/users&client_id=${process.env.githubClientId}&client_secret=${process.env.githubClientSecret}`
+      `https://api.github.com/users?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
     )
     const response = await axios.get(API_URL)
-    return res.status(200).json({ data: response.data.items, errors: [] })
+    return res.status(200).json({ data: response.data, errors: [] })
   } catch (e) {
     console.error(e)
     return res.status(500).json({ errors: `${e}` })
