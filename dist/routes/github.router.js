@@ -13,6 +13,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 require('dotenv').config();
 
+const {
+  githubClientId,
+  githubClientSecret
+} = process.env;
 const router = (0, _express.Router)(); // @route GET api/github/YOUR_QUERY_PARAMS_HERE
 // @desc  TESTING ROUTE
 // @access PUBLIC
@@ -32,7 +36,12 @@ router.get('/:test', async (req, res) => {
 });
 router.get('/search/users/:user', async (req, res) => {
   try {
-    const API_URL = `https://api.github.com/search/users?q=${req.params.user}&client_id=${githubClientId}&client_secret=${githubClientSecret}`;
+    const API_URL = await encodeURI(`https://api.github.com/search/users?q=${req.params.user}&client_id=${githubClientId}&client_secret=${githubClientSecret}`);
+    const response = await _axios.default.get(API_URL);
+    return res.status(200).json({
+      data: response.data.items,
+      errors: []
+    });
   } catch (e) {
     console.error(e);
   }
