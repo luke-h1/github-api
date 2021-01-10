@@ -30,5 +30,12 @@ router.get('/:test', async (req, res) => {
     });
   }
 });
+router.get('/search/users/:user', async (req, res) => {
+  try {
+    const API_URL = `https://api.github.com/search/users?q=${req.params.user}&client_id=${githubClientId}&client_secret=${githubClientSecret}`;
+  } catch (e) {
+    console.error(e);
+  }
+});
 var _default = router;
 exports.default = _default;

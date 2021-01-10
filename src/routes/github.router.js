@@ -17,4 +17,13 @@ router.get('/:test', async (req, res) => {
       .json({ msg: `Server Error:`, errors: `${e.message}` })
   }
 })
+
+router.get('/search/users/:user', async (req, res) => {
+  try {
+    const API_URL = `https://api.github.com/search/users?q=${req.params.user}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
+  } catch (e) {
+    console.error(e)
+  }
+})
+
 export default router
