@@ -29,7 +29,7 @@ router.get('/search/users/:user', async (req, res) => {
 router.get('/search/users/one/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(
-      `https://api.github.com/users?q=${req.params.user}&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
+      `https://api.github.com/users/${req.params.user}?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
     )
     const response = await axios.get(API_URL)
     return res.status(200).json(response.data)
