@@ -12,4 +12,4 @@ rm -rf dist/
 npm run build 
 git add * 
 git commit -am "deploy"
-git push heroku master
+git push heroku main
