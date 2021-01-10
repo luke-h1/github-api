@@ -21,10 +21,7 @@ router.get('/search/users/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(`https://api.github.com/search/users?q=${req.params.user}&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`);
     const response = await _axios.default.get(API_URL);
-    return res.status(200).json({
-      data: response.data.items,
-      errors: []
-    });
+    return res.status(200).json(response.data.items);
   } catch (e) {
     console.error(e);
     return res.status(500).json({

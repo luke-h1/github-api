@@ -14,7 +14,7 @@ router.get('/search/users/:user', async (req, res) => {
     )
 
     const response = await axios.get(API_URL)
-    return res.status(200).json({ data: response.data.items, errors: [] })
+    return res.status(200).json(response.data.items)
   } catch (e) {
     console.error(e)
     return res.status(500).json({ errors: `${e}` })
