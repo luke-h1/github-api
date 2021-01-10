@@ -8,6 +8,7 @@ const router = Router()
 // @desc SEARCH GITHUB USERS
 // @access public
 
+
 router.get('/search/users/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(
