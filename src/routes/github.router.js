@@ -18,6 +18,9 @@ router.get('/:test', async (req, res) => {
   }
 })
 
+// @route GET api/github/users/USERNAME_HERE
+// @desc SEARCH GITHUB USERS
+// @access public
 router.get('/search/users/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(
@@ -29,6 +32,17 @@ router.get('/search/users/:user', async (req, res) => {
   } catch (e) {
     console.error(e)
   }
+})
+
+// @route GET api/github/users/USERNAME_HERE
+// @desc GET SINGLE GITHUB USER
+// @access public
+router.get('/search/user/:username', async (req, res) => {
+  try {
+    const API_URL = await encodeURI(
+      `https://api.github.com/users/${req.params.username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
+    )
+  } catch (e) {}
 })
 
 export default router
