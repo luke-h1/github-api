@@ -1,6 +1,6 @@
 # github-api
 
-Express + Node JS API that returns github information for https://github.com/luke-h1/github-search
+Express + Node JS API that returns github information 
 
 Built with Express, Node, Babel & Jest. You can read about these technologies here: 
 
@@ -9,3 +9,5 @@ Built with Express, Node, Babel & Jest. You can read about these technologies he
 - [Babel](https://babeljs.io/)
 - [Jest](https://jestjs.io/)
 
+## deployment 
+npm run build
