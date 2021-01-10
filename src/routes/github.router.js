@@ -8,7 +8,6 @@ const router = Router()
 // @desc SEARCH GITHUB USERS
 // @access public
 
-
 router.get('/search/users/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(
@@ -47,23 +46,6 @@ router.get('/search/users/repos/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(
       `https://api.github.com/users/${req.params.user}/repos?per_page=5&sort=creadted:asc&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
-    )
-    const response = await axios.get(API_URL)
-    return res.status(200).json(response.data)
-  } catch (e) {
-    console.error(e)
-    return res.status(500).json({ errors: `${e}` })
-  }
-})
-
-// @route GET api/github/users/all
-// @desc GET a list of random github users to fill out home page
-// @access public
-
-router.get('/users/all', async (req, res) => {
-  try {
-    const API_URL = await encodeURI(
-      `https://api.github.com/users?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
     )
     const response = await axios.get(API_URL)
     return res.status(200).json(response.data)
