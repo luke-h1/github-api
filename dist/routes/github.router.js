@@ -60,21 +60,6 @@ router.get('/search/users/repos/:user', async (req, res) => {
       errors: `${e}`
     });
   }
-}); // @route GET api/github/users/all
-// @desc GET a list of random github users to fill out home page
-// @access public
-
-router.get('/users/all', async (req, res) => {
-  try {
-    const API_URL = await encodeURI(`https://api.github.com/users?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`);
-    const response = await _axios.default.get(API_URL);
-    return res.status(200).json(response.data.items);
-  } catch (e) {
-    console.error(e);
-    return res.status(500).json({
-      errors: `${e}`
-    });
-  }
 });
 var _default = router;
 exports.default = _default;
