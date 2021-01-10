@@ -66,7 +66,7 @@ router.get('/users/all', async (req, res) => {
       `https://api.github.com/users?client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
     )
     const response = await axios.get(API_URL)
-    return res.status(200).json(response.data.items)
+    return res.status(200).json(response.data)
   } catch (e) {
     console.error(e)
     return res.status(500).json({ errors: `${e}` })
