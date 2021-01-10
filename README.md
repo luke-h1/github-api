@@ -1,6 +1,6 @@
 # github-api
 
-Express + Node JS API that returns github information 
+Express + Node JS API that returns specific github information (to be consumed by a frontend project)
 
 Built with Express, Node, Babel & Jest. You can read about these technologies here: 
 
