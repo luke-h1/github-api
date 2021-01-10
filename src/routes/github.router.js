@@ -1,4 +1,4 @@
-import { Router } from 'express'
+import { response, Router } from 'express'
 import axios from 'axios'
 require('dotenv').config()
 const { githubClientId, githubClientSecret } = process.env
@@ -31,6 +31,7 @@ router.get('/search/users/:user', async (req, res) => {
     return res.status(200).json({ data: response.data.items, errors: [] })
   } catch (e) {
     console.error(e)
+    return res.status(500).json({ data: response.data, errors: `${e}` })
   }
 })
 
@@ -42,7 +43,10 @@ router.get('/search/user/:username', async (req, res) => {
     const API_URL = await encodeURI(
       `https://api.github.com/users/${req.params.username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
     )
-  } catch (e) {}
+  } catch (e) {
+    console.error(e)
+    return res.status(500).json({ data: response.data, errors: `${e}` })
+  }
 })
 
 export default router

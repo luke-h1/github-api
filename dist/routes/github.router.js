@@ -47,6 +47,10 @@ router.get('/search/users/:user', async (req, res) => {
     });
   } catch (e) {
     console.error(e);
+    return res.status(500).json({
+      data: _express.response.data,
+      errors: `${e}`
+    });
   }
 }); // @route GET api/github/users/USERNAME_HERE
 // @desc GET SINGLE GITHUB USER
@@ -55,7 +59,13 @@ router.get('/search/users/:user', async (req, res) => {
 router.get('/search/user/:username', async (req, res) => {
   try {
     const API_URL = await encodeURI(`https://api.github.com/users/${req.params.username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`);
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({
+      data: _express.response.data,
+      errors: `${e}`
+    });
+  }
 });
 var _default = router;
 exports.default = _default;
