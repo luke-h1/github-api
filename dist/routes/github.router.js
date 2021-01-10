@@ -47,7 +47,7 @@ router.get('/search/users/:user', async (req, res) => {
       errors: `${e}`
     });
   }
-}); // @route GET api/github/searc/repos/USERNAME_HERE
+}); // @route GET api/github/search/repos/USERNAME_HERE
 // @desc GET A GH USER'S REPOSITORIES
 // @access public
 
@@ -57,6 +57,24 @@ router.get('/search/repos/:user', async (req, res) => {
     const response = await _axios.default.get(API_URL);
     return res.status(200).json({
       data: response.data,
+      errors: []
+    });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({
+      errors: `${e}`
+    });
+  }
+}); // @route GET api/github/search/init/
+// @desc GET Initial users to fill out home page
+// @access public
+
+router.get('/search/init', async (req, res) => {
+  try {
+    const API_URL = await encodeURI(`https://api.github.com/search/users&client_id=${process.env.githubClientId}&client_secret=${process.env.githubClientSecret}`);
+    const response = await _axios.default.get(API_URL);
+    return res.status(200).json({
+      data: response.data.items,
       errors: []
     });
   } catch (e) {
