@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 require('dotenv').config();
 
-const router = (0, _express.Router)(); // @route GET api/github/users/USERNAME_HERE
+const router = (0, _express.Router)(); // @route GET api/github/search/users/USERNAME_HERE
 // @desc SEARCH GITHUB USERS
 // @access public
 

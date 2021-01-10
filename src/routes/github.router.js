@@ -4,16 +4,16 @@ require('dotenv').config()
 
 const router = Router()
 
-// @route GET api/github/users/USERNAME_HERE
+// @route GET api/github/search/users/USERNAME_HERE
 // @desc SEARCH GITHUB USERS
 // @access public
+
 router.get('/search/users/:user', async (req, res) => {
   try {
     const API_URL = await encodeURI(
       `https://api.github.com/search/users?q=${req.params.user}&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
     )
 
-    
     const response = await axios.get(API_URL)
     return res.status(200).json({ items: response.data.items })
   } catch (e) {
