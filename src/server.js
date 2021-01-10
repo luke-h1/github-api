@@ -2,7 +2,7 @@ import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
-
+import GithubRouter from './routes/github.router.js'
 export const app = express()
 
 app.disable('x-powered-by')
@@ -27,6 +27,9 @@ app.get('/', (req, res, next) => {
 })
 
 const PORT = process.env.PORT || 8000
+
+// define routing
+app.use('/api/github', GithubRouter)
 
 export const start = async () => {
   try {
