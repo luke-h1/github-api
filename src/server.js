@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit'
 import GithubRouter from './routes/github.router.js'
 export const app = express()
 
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 mins
   max: 80, // limit each IP addr to 80 requests per 15 mins
