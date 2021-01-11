@@ -2,8 +2,17 @@ import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
+import rateLimit from 'express-rate-limit'
 import GithubRouter from './routes/github.router.js'
 export const app = express()
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 mins
+  max: 50, // limit each IP addr to 50 requests per 15 mins
+})
+
+// apply to all requests
+app.use(limiter)
 
 app.disable('x-powered-by')
 app.use(cors())
