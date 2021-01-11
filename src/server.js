@@ -5,11 +5,12 @@ import cors from 'cors'
 import rateLimit from 'express-rate-limit'
 import GithubRouter from './routes/github.router.js'
 export const app = express()
-
+app.set('trust proxy', 1)
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 mins
-  max: 80, // limit each IP addr to 80 requests per 15 mins
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 100, // limit each IP addr to 100 requests per hour
+  message: 'Too many requests from this IP address. try again in an hour',
 })
 
 // apply to all requests
