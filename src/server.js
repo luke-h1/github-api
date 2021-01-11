@@ -23,12 +23,12 @@ app.use(express.json({ extended: false }))
 app.get('/', (req, res, next) => {
   res
     .status(200)
-    .json({ message: 'Welcome to the  API (express + node wrapper)' })
+    .json({ message: 'Welcome to the API (express + node wrapper)' })
 })
 
 const PORT = process.env.PORT || 8000
 
-// define routing
+// routes
 app.use('/api/github', GithubRouter)
 
 export const start = async () => {
