@@ -17,5 +17,5 @@ Built with Express, Node, Babel & Jest. You can read about these technologies he
 In order to deploy, the ES6 JS needs to be transpiled with the help of babel to common js. This is achieved by running the below NPM command. For each deployment you will need to remove the dist/ folder, run the build script & then deploy to production
 
 ```shell
-npm run dev
+npm run build
 ```
