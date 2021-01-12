@@ -4,6 +4,8 @@ import morgan from 'morgan'
 import cors from 'cors'
 import rateLimit from 'express-rate-limit'
 import GithubRouter from './routes/github.router.js'
+const helmet = require('helmet')
+
 export const app = express()
 app.set('trust proxy', 1)
 
@@ -12,6 +14,9 @@ const limiter = rateLimit({
   max: 100, // limit each IP addr to 100 requests per hour
   message: 'Too many requests from this IP address. try again in an hour',
 })
+
+// set various headers
+app.use(helmet())
 
 // apply to all requests
 app.use(limiter)
