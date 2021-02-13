@@ -1,0 +1,41 @@
+{
+  "name": "github-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "cross-env NODE_ENV=testing jest --forceExit --detectOpenHandles  --silent"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luke-h1/github-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luke-h1/github-api/issues"
+  },
+  "homepage": "https://github.com/luke-h1/github-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-rate-limit": "^5.2.5",
+    "helmet": "^4.4.1",
+    "morgan": "^1.10.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
