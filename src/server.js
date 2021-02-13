@@ -4,8 +4,10 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { errorHandler } from './middleware/errorMiddleware.js';
 import colors from 'colors';
+import { errorHandler } from './middleware/errorMiddleware.js';
+import userRoutes from './routes/userRoutes.js';
+
 dotenv.config();
 export const app = express();
 app.set('trust proxy', 1);
@@ -36,6 +38,8 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.send('API is running');
 });
+
+app.use('/api/github/search/users', userRoutes);
 
 const PORT = process.env.PORT || 5001;
 
